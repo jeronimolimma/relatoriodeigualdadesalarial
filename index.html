@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Transparência e Igualdade Salarial 2026</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #10b981;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* Helpers */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: var(--white);
+            padding: 10rem 0 8rem;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            text-align: left;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: rotate(-2deg);
+            transition: var(--transition);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            background: #059669;
+            box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.4);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-card .val {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            color: var(--secondary);
+        }
+
+        /* About Section */
+        .about {
+            text-align: center;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .about h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .data-source {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .source-pill {
+            background: #eef2ff;
+            color: var(--primary);
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        /* Diversity Chart */
+        .diversity-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .bar-group {
+            width: 100%;
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .bar-bg {
+            background: #e2e8f0;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            background: var(--primary);
+            height: 100%;
+            border-radius: 6px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.17, 0.55, 0.55, 1);
+        }
+
+        /* Criteria & Policies */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .icon-box {
+            background: #eef2ff;
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Pay Gap Table */
+        .table-wrapper {
+            background: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: #f1f5f9;
+            padding: 1.25rem;
+            font-weight: 700;
+        }
+
+        td {
+            padding: 1.25rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .tag-positive {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-main);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .footer-note {
+            opacity: 0.6;
+            font-size: 0.875rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.25rem; }
+            .hero-flex { flex-direction: column; text-align: center; gap: 3rem; }
+            .diversity-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .hero { clip-path: none; padding-top: 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-flex">
+                <div class="hero-content">
+                    <h1 class="reveal">Relatório de Transparência e Igualdade Salarial – 2026</h1>
+                    <p class="reveal">Demonstramos nosso compromisso com a equidade através de dados concretos e ações afirmativas para um ambiente de trabalho justo.</p>
+                    
+                    <div class="reveal">
+                        <a href="/RelatorioIgualdadeSalarialLote_2026_1_54795438000132.pdf" download class="btn-download">
+                            <i data-lucide="download"></i>
+                            Baixar Relatório Completo (PDF)
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image reveal">
+                    <img src="/img_principal.jpg" alt="Capa do Relatório de Igualdade Salarial 2026">
+                </div>
+            </div>
+
+            <div class="hero-stats reveal">
+                <div class="hero-card">
+                    <span class="val">116,4%</span>
+                    <p>Remuneração média das mulheres em relação aos homens</p>
+                </div>
+                <div class="hero-card">
+                    <span class="val">112,8%</span>
+                    <p>Salário mediano feminino em relação ao masculino</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SOBRE -->
+    <section class="about container">
+        <span class="section-tag">Visão Geral</span>
+        <h2 class="reveal">Sobre o Relatório</h2>
+        <div class="about-content reveal">
+            <p>Este documento cumpre as exigências legais de transparência salarial, consolidando informações sobre a estrutura remuneratória e a composição do nosso quadro de colaboradores.</p>
+            <div style="margin: 1.5rem 0; font-size: 1.5rem; font-weight: 700; color: var(--primary);">
+                Total de 188 Colaboradores
+            </div>
+            <div class="data-source">
+                <span class="source-pill">eSocial</span>
+                <span class="source-pill">RAIS</span>
+                <span class="source-pill">Emprega Brasil</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIVERSIDADE -->
+    <section style="background: #f1f5f9;">
+        <div class="container">
+            <div class="diversity-grid">
+                <div class="reveal">
+                    <span class="section-tag">Composição</span>
+                    <h2>Diversidade Étnico-Racial</h2>
+                    <p>Abaixo apresentamos a distribuição do nosso quadro, reafirmando nosso foco em representatividade em todos os níveis.</p>
+                </div>
+                <div class="chart-container reveal">
+                    <div class="bar-group">
+                        <div class="bar-label"><span>Mulheres Não Negras</span><span>34%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" data-width="34%"></div></div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-label"><span>Homens Não Negros</span><span>32%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" data-width="32%"></div></div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-label"><span>Mulheres Negras</span><span>18%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" data-width="18%"></div></div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-label"><span>Homens Negros</span><span>16%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" data-width="16%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CRITÉRIOS -->
+    <section class="container">
+        <span class="section-tag">Mérito e Estrutura</span>
+        <h2 style="margin-bottom: 3rem; text-align: center;">Critérios de Remuneração</h2>
+        <div class="grid-cards">
+            <div class="info-card reveal">
+                <div class="icon-box"><i data-lucide="layers"></i></div>
+                <h3>Plano de Cargos</h3>
+                <p>Estrutura hierárquica clara com faixas salariais definidas.</p>
+            </div>
+            <div class="info-card reveal">
+                <div class="icon-box"><i data-lucide="award"></i></div>
+                <h3>Experiência</h3>
+                <p>Valorização do tempo de mercado e maturidade profissional.</p>
+            </div>
+            <div class="info-card reveal">
+                <div class="icon-box"><i data-lucide="users"></i></div>
+                <h3>Trabalho em Equipe</h3>
+                <p>Avaliação de competências colaborativas e interpessoais.</p>
+            </div>
+            <div class="info-card reveal">
+                <div class="icon-box"><i data-lucide="trending-up"></i></div>
+                <h3>Metas</h3>
+                <p>Bonificações atreladas ao cumprimento de objetivos estratégicos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- POLÍTICAS -->
+    <section style="background: #4f46e5; color: white;">
+        <div class="container">
+            <span class="section-tag" style="color: #a5b4fc;">Inclusão</span>
+            <h2 style="margin-bottom: 3rem;">Nossas Políticas de Incentivo</h2>
+            <div class="grid-cards">
+                <div class="info-card reveal" style="color: var(--text-main);">
+                    <div class="icon-box"><i data-lucide="user-plus"></i></div>
+                    <h3>Liderança Feminina</h3>
+                    <p>Programas de mentoria para ascensão de mulheres a cargos de gestão.</p>
+                </div>
+                <div class="info-card reveal" style="color: var(--text-main);">
+                    <div class="icon-box"><i data-lucide="heart"></i></div>
+                    <h3>Diversidade Ampla</h3>
+                    <p>Busca ativa e acolhimento para talentos PCD, LGBTQIA+ e Minorias.</p>
+                </div>
+                <div class="info-card reveal" style="color: var(--text-main);">
+                    <div class="icon-box"><i data-lucide="home"></i></div>
+                    <h3>Apoio Familiar</h3>
+                    <p>Flexibilidade para equilíbrio entre vida profissional e responsabilidades do lar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÁREAS -->
+    <section class="container">
+        <span class="section-tag">Detalhes por Categoria</span>
+        <h2 style="margin-bottom: 2rem;">Diferença Salarial por Área</h2>
+        <div class="table-wrapper reveal">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Grupamento de Áreas</th>
+                        <th>Status de Igualdade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Operacional</td>
+                        <td class="tag-positive">Equivalente / Superior Feminino</td>
+                    </tr>
+                    <tr>
+                        <td>Administrativo</td>
+                        <td class="tag-positive">Equivalente / Superior Feminino</td>
+                    </tr>
+                    <tr>
+                        <td>Técnico</td>
+                        <td class="tag-positive">Equivalente</td>
+                    </tr>
+                    <tr>
+                        <td>Superior / Especialista</td>
+                        <td class="tag-positive">Equivalente</td>
+                    </tr>
+                    <tr>
+                        <td>Gerência / Diretoria</td>
+                        <td class="tag-positive">Superior Feminino</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>Relatório de Transparência Salarial 2026</strong></p>
+            <p class="footer-note">
+                Fonte dos dados: Ministério do Trabalho e Emprego / Ministério das Mulheres.<br>
+                Base legal: Lei nº 14.611/2023. Os dados consideram a média e mediana estatística de todo o quadro funcional.
+            </p>
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="font-size: 0.875rem; opacity: 0.9;">Desenvolvido por <strong>Jerônimo Lima</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar ícones
+        lucide.createIcons();
+
+        // Animação de Scroll (Reveal)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Se for um gráfico, anima a barra
+                    const bars = entry.target.querySelectorAll('.bar-fill');
+                    bars.forEach(bar => {
+                        bar.style.width = bar.getAttribute('data-width');
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
